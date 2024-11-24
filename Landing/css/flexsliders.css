@@ -53,7 +53,6 @@
 
 .flexslider .slides>li {
   display: none;
-  -webkit-backface-visibility: hidden;
 }
 
 .flexslider .slides img {

@@ -17,7 +17,7 @@ $baner = $resultado->fetch_assoc();
 	<link href="landing/css/bootstrap.min.css" rel="stylesheet">
 	<link href="landing/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="landing/css/flexsliders.css" rel="stylesheet">
-	<link href="landing/css/templatemo-style.css" rel="stylesheet">
+	<link href="landing/css/stemplatemo-style.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +27,28 @@ $baner = $resultado->fetch_assoc();
     <![endif]-->
 
 </head>
+<style>
+	.imagen {
+		width: 250px;
+		height: 225px;
+		object-fit: cover;
+	}
+
+	.tipo {
+		height: 186px;
+		width: 255px;
+		object-fit: cover;
+	}
+
+	@media (max-width: 768px) {
+		.adap {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: center;
+		}
+	}
+</style>
 
 <body class="tm-gray-bg">
 	<!-- Header -->
@@ -44,8 +66,8 @@ $baner = $resultado->fetch_assoc();
 						<ul>
 							<li><a href="index.html" class="active">Inicio</a></li>
 							<li><a href="landing/about.html">Sobre</a></li>
-							<li><a href="landing/tours.html">Registro</a></li>
-							<li><a href="landing/contact.html">Contacto</a></li>
+							<li><a href="landing/tours.html">Tiendas</a></li>
+							<li><a href="login/login.html">Sesión</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -64,7 +86,7 @@ $baner = $resultado->fetch_assoc();
 						<p class="tm-banner-subtitle">PARA COMPRAR</p>
 						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
 					</div>
-					<img src="landing/img/banner-1.jpg" alt="Image"  />
+					<img src="landing/img/b1.jpg" alt="Image" />
 				</li>
 				<li>
 					<div class="tm-banner-inner">
@@ -89,28 +111,28 @@ $baner = $resultado->fetch_assoc();
 	<!-- Primeras 3 fruterias -->
 	<section class="container tm-home-section-1" id="more">
 		<div class="row">
-<?php
-if ($resultado->num_rows > 0) {
-    while ($baner = $resultado->fetch_assoc()) {
-        // Obtener los datos de la fila actual
-        $nombre = $baner['nombre'];
-        $telefono = $baner['telefono'];
+			<?php
+			if ($resultado->num_rows > 0) {
+				while ($baner = $resultado->fetch_assoc()) {
+					// Obtener los datos de la fila actual
+					$nombre = $baner['nombre'];
+					$telefono = $baner['telefono'];
 
-        // Generar el bloque HTML dinámicamente
-        echo '<div class="col-lg-4 col-md-4 col-sm-6">';
-        echo '    <div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-center">';
-		echo '		<img src="data:image/jpeg;base64,' . base64_encode($baner['foto']) . '" alt="image" class="baner">';
-        echo '        <a href="#">';
-        echo '            <div class="tm-green-gradient-bg tm-city-price-container">';
-        echo "                <span>$nombre</span>";
-        echo "                <span>$telefono</span>";
-        echo '            </div>';
-        echo '        </a>';
-        echo '    </div>';
-        echo '</div>';
-    }
-}
-?>
+					// Generar el bloque HTML dinámicamente
+					echo '<div class="col-lg-4 col-md-4 col-sm-6">';
+					echo '    <div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-center">';
+					echo '		<img src="data:image/jpeg;base64,' . base64_encode($baner['foto']) . '" alt="image" class="baner">';
+					echo '        <a href="#">';
+					echo '            <div class="tm-green-gradient-bg tm-city-price-container">';
+					echo "                <span>$nombre</span>";
+					echo "                <span>$telefono</span>";
+					echo '            </div>';
+					echo '        </a>';
+					echo '    </div>';
+					echo '</div>';
+				}
+			}
+			?>
 			<!-- <div class="col-lg-4 col-md-4 col-sm-6">
 				<div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-center">
 					<img src="landing/img/index-01.jpg" alt="image" class="img-responsive">
@@ -131,19 +153,19 @@ if ($resultado->num_rows > 0) {
 						<hr>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6">
-						<h2 class="tm-section-title">Encunatra productos de todo tipo</h2>
+						<h2 class="tm-section-title">Encuentra buen servicio y productos de todo tipo</h2>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<hr>
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row adap">
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
 					<div class="tm-home-box-2">
-						<img src="landing/img/index-03.jpg" alt="image" class="img-responsive" >
+						<img src="landing/img/3.jpg" alt="image" class="img-responsive tipo">
 						<h3>FRUSTAS FRESCAS</h3>
-						<p class="tm-date">PODUCTOS DE ALTA CALIDAD</p>
+						<p class="tm-date">PRODUCTOS DE ALTA CALIDAD</p>
 						<div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
@@ -156,14 +178,14 @@ if ($resultado->num_rows > 0) {
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
 					<div class="tm-home-box-2">
-						<img src="landing/img/index-04.jpg" alt="image" class="img-responsive">
-						<h3>Proin Gravida Nibhvel Lorem Quis Bind</h3>
-						<p class="tm-date">26 March 2016</p>
+						<img src="landing/img/44.jpg" alt="image" class="img-responsive tipo">
+						<h3>VERDURAS FRESCAS</h3>
+						<p class="tm-date">PRODUCTOS CONFIABLES</p>
 						<div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span
-									class="tm-home-box-2-description">Travel</span></a>
+									class="tm-home-box-2-description">VERDURAS</span></a>
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
 						</div>
@@ -171,14 +193,14 @@ if ($resultado->num_rows > 0) {
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
 					<div class="tm-home-box-2">
-						<img src="landing/img/index-05.jpg" alt="image" class="img-responsive">
-						<h3>Proin Gravida Nibhvel Lorem Quis Bind</h3>
-						<p class="tm-date">24 March 2016</p>
+						<img src="landing/img/5.webp" alt="image" class="img-responsive tipo">
+						<h3>ABARROTES</h3>
+						<p class="tm-date">Productos de abarrotera</p>
 						<div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span
-									class="tm-home-box-2-description">Travel</span></a>
+									class="tm-home-box-2-description">Abarrotes</span></a>
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
 						</div>
@@ -186,14 +208,14 @@ if ($resultado->num_rows > 0) {
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
 					<div class="tm-home-box-2 tm-home-box-2-right">
-						<img src="landing/img/index-06.jpg" alt="image" class="img-responsive">
-						<h3>Proin Gravida Nibhvel Lorem Quis Bind</h3>
-						<p class="tm-date">22 March 2016</p>
+						<img src="landing/img/6.webp" alt="image" class="img-responsive tipo">
+						<h3>Buenos servicios</h3>
+						<p class="tm-date">Atencion de calidad</p>
 						<div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span
-									class="tm-home-box-2-description">Travel</span></a>
+									class="tm-home-box-2-description">Servicio</span></a>
 							<a href="#" class="tm-home-box-2-link"><i
 									class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
 						</div>
@@ -202,9 +224,7 @@ if ($resultado->num_rows > 0) {
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<p class="home-description">Holiday is free Bootstrap v3.3.5 responsive template for tour and travel
-						websites. You can download and use this layout for any purpose. You do not need to provide a
-						credit link to us. If you have any question, feel free to <a
+					<p class="home-description">Buscamos que neustra aplicación impulse a los negocios y que ayude a personas a conseguir productos de calidad a solo un clic <a
 							href="http://www.facebook.com/templatemo" target="_parent">contact us</a>. Credit goes to <a
 							rel="nofollow" href="http://unsplash.com" target="_parent">Unspash</a> for images used in
 						this template.</p>
@@ -222,7 +242,7 @@ if ($resultado->num_rows > 0) {
 						<hr>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-6">
-						<h2 class="tm-section-title">Popular Packages</h2>
+						<h2 class="tm-section-title">Que saber</h2>
 					</div>
 					<div class="col-lg-4 col-md-3 col-sm-3">
 						<hr>
@@ -231,76 +251,66 @@ if ($resultado->num_rows > 0) {
 				<div class="col-lg-6">
 					<div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="landing/img/index-07.jpg" alt="image" class="img-responsive">
+							<img src="landing/img/78.jpg" alt="image" class="img-responsive imagen">
 						</div>
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean
-								sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
-							<div class="tm-home-box-2-container">
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-								<a href="#" class="tm-home-box-2-link"><span
-										class="tm-home-box-2-description box-3">Travel</span></a>
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-							</div>
+							<p class="tm-home-box-3-description">Gestión de Empresas y Negocios</p>
+
+							<ul class="tm-home-box-3-description">
+								<li>Crear y gestionar su inventario: Agregar, editar y eliminar productos fácilmente.</li>
+								<li>Monitorear sus ventas: Llevar un registro actualizado de las ventas realizadas.</li>
+								<li>Mantener control personalizado: Ajustar precios y cantidades según sus necesidades.</li>
+							</ul>
+
+
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="landing/img/index-08.jpg" alt="image" class="img-responsive">
+							<img src="landing/img/8.jpg" alt="image" class="img-responsive imagen">
 						</div>
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean
-								sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
-							<div class="tm-home-box-2-container">
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-								<a href="#" class="tm-home-box-2-link"><span
-										class="tm-home-box-2-description box-3">Travel</span></a>
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-							</div>
+							<p class="tm-home-box-3-description">Compra en Línea para Clientes</p>
+							<ul class="tm-home-box-3-description">
+								<li>Agregar productos a un carrito de compras: Elegir frutas y otros productos con la cantidad deseada.</li>
+								<li>Realizar pedidos personalizados: Especificar la dirección de entrega para recibir los productos en casa.</li>
+								<li>Pagos sencillos: Completar sus compras rápidamente y sin complicaciones.</li>
+							</ul>
+
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="landing/img/index-09.jpg" alt="image" class="img-responsive">
+							<img src="landing/img/9.jpg" alt="image" class="img-responsive imagen">
 						</div>
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean
-								sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
-							<div class="tm-home-box-2-container">
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-								<a href="#" class="tm-home-box-2-link"><span
-										class="tm-home-box-2-description box-3">Travel</span></a>
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-							</div>
+							<p class="tm-home-box-3-description">Conexión entre Empresas y Clientes</p>
+							<ul class="tm-home-box-3-description">
+								<li>Las empresas pueden ofrecer sus productos directamente a los consumidores.</li>
+								<li>Los clientes pueden buscar empresas cercanas, conocer sus ofertas y realizar pedidos fácilmente.</li>
+								<li>Promueve un comercio local eficiente y una comunidad conectada.</li>
+							</ul>
+
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="landing/img/index-10.jpg" alt="image" class="img-responsive">
+							<img src="landing/img/10.jpg" alt="image" class="img-responsive imagen">
 						</div>
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean
-								sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
-							<div class="tm-home-box-2-container">
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-								<a href="#" class="tm-home-box-2-link"><span
-										class="tm-home-box-2-description box-3">Travel</span></a>
-								<a href="#" class="tm-home-box-2-link"><i
-										class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-							</div>
+							<p class="tm-home-box-3-description">Facilidad para Actualizar y Gestionar el Inventario</p>
+							<ul class="tm-home-box-3-description">
+								<li>Agregar nuevos productos al catálogo: Por ejemplo, frutas de temporada o promociones especiales.</li>
+								<li>Actualizar inventarios en tiempo real: Modificar la disponibilidad de productos según las ventas o nuevas llegadas.</li>
+								<li>Organizar su sistema de ventas</li>
+							</ul>
+
 						</div>
 					</div>
 				</div>
@@ -327,9 +337,9 @@ if ($resultado->num_rows > 0) {
 	<script type="text/javascript" src="landing/js/templatemo-script.js"></script> <!-- Templatemo Script -->
 	<script>
 		// HTML document is loaded. DOM is ready.
-		$(function () {
+		$(function() {
 
-			$('#hotelCarTabs a').click(function (e) {
+			$('#hotelCarTabs a').click(function(e) {
 				e.preventDefault()
 				$(this).tab('show')
 			})
@@ -340,7 +350,7 @@ if ($resultado->num_rows > 0) {
 			$('.date-time').datetimepicker();
 
 			// https://css-tricks.com/snippets/jquery/smooth-scrolling/
-			$('a[href*=#]:not([href=#])').click(function () {
+			$('a[href*=#]:not([href=#])').click(function() {
 				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 					var target = $(this.hash);
 					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -355,7 +365,7 @@ if ($resultado->num_rows > 0) {
 		});
 
 		// Load Flexslider when everything is loaded.
-		$(window).load(function () {
+		$(window).load(function() {
 			// Vimeo API nonsense
 
 			/*
