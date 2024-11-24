@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de datos</title>
+<link rel="stylesheet" href="formulario.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-lg-2 col-md-1"></div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <form action="alta.php" method="post" enctype="multipart/form-data">
+                    <div class="formulario">
+                        <center>
+                            <h1>ALTA DE PRODUCTOS</h1>
+                        </center>
+                        <label for="nombre">Nombre del producto:</label>
+                        <input type="text" id="nombre" name="nombre" class="input-shadow">
+
+                        <label for="description">Descripcción del productos:</label>
+                        <input type="text" id="description" name="description" class="input-shadow" title="description">
+
+                        <label for="Precio">Precio</label>
+                        <input type="text" id="precio" name="precio" class="input-shadow" title="ap">
+
+                        <label for="email">Stock:</label>
+                        <input type="number" min="1" id="stock" name="stock" class="input-shadow" title="stock">
+
+                        <label for="telefono">Fecha de caducidad:</label>
+                        <input type="date" id="fecha_caducidad" name="fecha_caducidad" class="input-shadow"
+                            title="fecha_caducidad">
+
+                        <label for="categoria">Categoria:</label>
+                        <select name="categoria" id="categoria" title="categoria" class="input-shadow">
+                            <option value="Pesado">Pedado</option>
+                            <option value="Por pieza">Por pieza</option>
+                            <option value="Por pesos">Por pesos $</option>
+                        </select>
+
+                        <label for="foto">Foto dle producto</label>
+                        <input type="file" id="foto" name="foto" class="input-shadow"
+                        title="foto">
+
+                        <div class="btn-group">
+                            <button type="submit" id="insertar" class="btn btn-primary">Insertar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-1"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

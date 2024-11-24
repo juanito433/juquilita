@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navigation Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navegacion.css">
+</head>
+
+<body>
+    <section id="display-area">
+        Click on a menu item to display content here
+    </section>
+    <nav class="navigation">
+        <ul class="nav-list">
+            <li class="active" data-page="consultas/consultaEmpleado.php">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                    </svg>
+                    Consulta
+                </a>
+            </li>
+            <li data-page="alta-empleados.html">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-heartbeat">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M19.5 13.572l-7.5 7.428l-2.896 -2.868m-6.117 -8.104a5 5 0 0 1 9.013 -3.022a5 5 0 1 1 7.5 6.572" />
+                        <path d="M3 13h2l2 3l2 -6l1 3h3" />
+                    </svg>
+                    Altas
+                </a>
+            </li>
+            <li data-page="delete-empleado.php" class="cta-wrapper">
+                <button class="cta-btn" type="submit" title="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 3v1h6v-1H9zM4 6h16v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zM11 18a1 1 0 0 1-1-1h2a1 1 0 0 1-1 1z">
+                        </path>
+                    </svg>
+
+                </button>
+            </li>
+            <li data-page="delete-empleado.php">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-month">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                        <path d="M16 3v4" />
+                        <path d="M8 3v4" />
+                        <path d="M4 11h16" />
+                        <path d="M7 14h.013" />
+                        <path d="M10.01 14h.005" />
+                        <path d="M13.01 14h.005" />
+                        <path d="M16.015 14h.005" />
+                        <path d="M13.015 17h.005" />
+                        <path d="M7.01 17h.005" />
+                        <path d="M10.01 17h.005" />
+                    </svg>
+                    Eliminar
+                </a>
+            </li>
+            <li data-page="update-empleado.php">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-barbell">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M2 12h1" />
+                        <path d="M6 8h-2a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h2" />
+                        <path d="M6 7v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1 -1v-10a1 1 0 0 0 -1 -1h-1a1 1 0 0 0 -1 1z" />
+                        <path d="M9 12h6" />
+                        <path d="M15 7v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1 -1v-10a1 1 0 0 0 -1 -1h-1a1 1 0 0 0 -1 1z" />
+                        <path d="M18 8h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2" />
+                        <path d="M22 12h-1" />
+                    </svg> 
+                    Actualizar
+                </a>
+            </li>
+            <div class="active-bar"></div>
+        </ul>
+    </nav>
+    <script src="navegacion.js"></script>
+</body>
+
+</html>

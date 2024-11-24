@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> App store</title>
+    <!-- favicon -->
+    <link rel="icon"
+        href="https://yt3.ggpht.com/a/AGF-l78km1YyNXmF0r3-0CycCA0HLA_i6zYn_8NZEg=s900-c-k-c0xffffffff-no-rj-mo"
+        type="image/gif" sizes="16x16">
+    <!-- EXTERNAL LINKS -->
+    <link rel="stylesheet" href="css/header.css">
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <section>
+            <!-- MAIN CONTAINER -->
+            <div id="container">
+                <!-- SHOP NAME -->
+                <div id="shopName"><a href="index.html"> <b>Frut</b>eria</a></div>
+                <!-- COLLCETIONS ON WEBSITE -->
+                <div id="collection">
+                    <!-- <div id="clothing"><a href="clothing.html"> CLOTHING </a></div>
+                        <div id="accessories"><a href="accessories.html"> ACCESSORIES </a></div>
+                    -->
+                </div>
+
+                <!-- SEARCH SECTION -->
+                <div id="search">
+                    <input type="text" id="searchBox" name="searchBox" placeholder="Busca tus productos">
+                </div>
+                <div id="resultados"></div>
+
+
+                <!-- USER SECTION (CART AND USER ICON) -->
+                <div id="user">
+                    <button onclick="openModal()">
+                        <i class="fas fa-shopping-cart addedToCart">
+                            <div id="badge">0</div>
+                        </i>
+                    </button>
+                    <a href="../login.html"> <!-- <i class="fas fa-user-circle userIcon"></i> -->Inicia sesiòn </a>
+                </div>
+            </div>
+
+        </section>
+    </header>
+
+
+    <script>// Obtener referencias
+        const searchBox = document.getElementById('searchBox');
+        const resultados = document.getElementById('resultados');
+
+        // Escuchar el evento input
+        searchBox.addEventListener('input', function () {
+            const searchText = searchBox.value.toLowerCase(); // Texto ingresado
+            resultados.innerHTML = ''; // Limpiar resultados anteriores
+
+            if (searchText.length > 0) {
+                // Realizar la consulta al servidor
+                fetch('buscar_productos.php?query=' + searchText)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            data.forEach(producto => {
+                                const div = document.createElement('div');
+                                div.classList.add('resultado-item');
+                                div.innerHTML = `
+                                <span>${producto.nombre} - $${producto.precio_por_kilo.toFixed(2)} por kilo</span>
+                                <input type="number" id="cantidad_${producto.id}" placeholder="Gramos" min="1">
+                                <button onclick="agregarProductoAlCarrito('${producto.id}', '${producto.nombre}', '${producto.precio_por_kilo}')">
+                                    Agregar al carrito
+                                </button>
+                            `;
+                                resultados.appendChild(div);
+                            });
+                        } else {
+                            resultados.innerHTML = '<p>No se encontraron productos</p>';
+                        }
+                    });
+            }
+        });
+
+        // Función para agregar productos al carrito
+        function agregarProductoAlCarrito(id, nombre, precioPorKilo) {
+            const cantidadInput = document.getElementById(`cantidad_${id}`);
+            const cantidadGramos = parseFloat(cantidadInput.value) || 1;
+            const precio = (precioPorKilo / 1000) * cantidadGramos;
+
+            addToCart(nombre, precioPorKilo, cantidadGramos); // Llamar la función de carrito existente
+            resultados.innerHTML = ''; // Limpiar los resultados después de agregar
+            searchBox.value = ''; // Limpiar el buscador
+        }
+    </script>
+
+</body>
+
+
+</html>

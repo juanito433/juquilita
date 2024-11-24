@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de datos</title>
+    <link rel="stylesheet" href="formularios.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-lg-2 col-md-1"></div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <form action="altaClientes.php" method="post">
+                    <div class="formulario">
+                        <center><h1>ALTA CLIENTES</h1></center>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="input-shadow">
+                    
+                        <label for="apellido">Apellido Paterno:</label>
+                        <input type="text" id="apellido-paterno" name="apellido-paterno" class="input-shadow" title="ap">
+
+                        <label for="apellido">Apellido Materno:</label>
+                        <input type="text" id="apellido-materno" name="apellido-materno" class="input-shadow" title="am">
+
+                        <label for="tipo">Tipo de cliente:</label>
+                        <select name="TipoCliente" id="TipoCliente" title="TipoCliente" class="input-shadow">
+                            <option selected>Escoge una opción</option>
+                            <option value="Mayorista">Mayorista</option>
+                            <option value="Minorista">Minorista</option>
+                        </select>
+
+                        <div class="btn-group">
+                            <button type="submit" id="insertar" class="btn btn-primary">Insertar</button>
+                            <!-- <button type="button" id="editar" class="btn btn-warning">Editar</button>
+                            <button type="button" id="eliminar" class="btn btn-danger">Eliminar</button>
+                            <button type="button" id="actualizar" class="btn btn-success">Actualizar</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-1"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

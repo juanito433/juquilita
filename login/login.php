@@ -1,0 +1,40 @@
+<?php
+// Recibir datos del formulario
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+
+// Verificar que no estén vacíos
+if (empty($email) || empty($password)) {
+    die("El correo y la contraseña son obligatorios.");
+}
+
+// Conexión a la base de datos
+$conexion = mysqli_connect("localhost", "root", "", "fruteria");
+
+if (!$conexion) {
+    die("Error en la conexión: " . mysqli_connect_error());
+}
+
+// Usar una consulta preparada para evitar inyección SQL
+$consulta = $conexion->prepare("SELECT * FROM users WHERE correo = '$email' AND password = '$password'");
+
+// Ejecutar la consulta
+$consulta->execute();
+$resultado = $consulta->get_result();
+$user = mysqli_fetch_assoc($resultado);
+
+// Validar credenciales
+if ($resultado->num_rows > 0) {
+    session_start();
+    $_SESSION['id_users'] = $user['id'];
+    header("Location: ../app/index.php");
+    exit;
+} else {
+    // Credenciales incorrectas
+    echo "Correo o contraseña incorrectos.";
+}
+
+// Cerrar la consulta y la conexión
+$consulta->close();
+mysqli_close($conexion);
+?>

@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-image: url('images/fondo.jpeg'); 
+    background-size: cover; 
+    background-position: center;
+}
+
+h1 {
+    color: #fff;
+    padding: 20px;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+    background-color: #e8e4e4;
+    border-radius: 10px;
+    margin: 40px auto;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.input-shadow {
+    width: calc(100% - 20px);
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.input-shadow:hover {
+    box-shadow: 0 0 10px rgb(24, 134, 219);
+}
+
+.btn-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px !important;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #333;
+    border-radius: 10px !important;
+
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 10px !important;
+
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 10px !important;
+
+}
+
+/* Media queries para hacer el formulario responsivo */
+@media (max-width: 768px) {
+    .formulario {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .formulario {
+        margin: 20px;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Title section -->
+        <div class="title">Registro de Clientes</div>
+        <div class="content">
+            <!-- Registration form -->
+            <form action="register.php" method="post">
+                <div class="user-details">
+                    <!-- Input for Full Name -->
+                    <div class="input-box">
+                        <label for="nombre" class="details">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo" required>
+                    </div>
+                    <!-- Input for Email -->
+                    <div class="input-box">
+                        <label for="email" class="details">Correo</label>
+                        <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico" required>
+                    </div>
+                    <!-- Input for Password -->
+                    <div class="input-box">
+                        <label for="password" class="details">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Escribe tu contraseña" required>
+                    </div>
+                    <!-- Input for Confirm Password -->
+                    <div class="input-box">
+                        <label for="confirm-password" class="details">Confirma Contraseña</label>
+                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirma tu contraseña" required>
+                    </div>
+                    <!-- Input for Phone Number -->
+                    <div class="input-box">
+                        <label for="phone" class="details">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Escribe tu número telefónico" required>
+                    </div>
+                    <!-- Input for Address -->
+                    <div class="input-box">
+                        <label for="ubicacion" class="details">Dirección</label>
+                        <input type="text" id="ubicacion" name="ubicacion" placeholder="Escribe tu dirección" required>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="button">
+                    <input type="submit" value="Registrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
