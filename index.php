@@ -66,7 +66,7 @@ $baner = $resultado->fetch_assoc();
 						<ul>
 							<li><a href="index.html" class="active">Inicio</a></li>
 							<li><a href="landing/about.html">Sobre</a></li>
-							<li><a href="landing/tours.html">Tiendas</a></li>
+							<li><a href="landing/tours.php">Tiendas</a></li>
 							<li><a href="login/login.html">Sesión</a></li>
 						</ul>
 					</nav>
