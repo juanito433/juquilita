@@ -26,13 +26,6 @@ http://www.templatemo.com/tm-475-holiday
 	<link href="css/flexsliders.css" rel="stylesheet">
 	<link href="css/stemplatemo-style.css" rel="stylesheet">
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 	<style>
 		.store{
 			width: 532px;
@@ -57,7 +50,7 @@ http://www.templatemo.com/tm-475-holiday
 					<nav class="tm-nav">
 						<ul>
 							<li><a href="../index.php">INICIO</a></li>
-							<li><a href="about.html">SOBRE</a></li>
+							<li><a href="sobre.html">SOBRE</a></li>
 							<li><a href="#" class="active">Tiendas</a></li>
 							<li><a href="contact.html">SESIÓN</a></li>
 						</ul>
