@@ -5,18 +5,30 @@ if (!isset($_SESSION['id_users'])) {
     header("Location: ../login/login.html");
     exit();
 }
-// Ahora puedes acceder al ID del usuario logueado
+// Obtén el ID del usuario logueado
 $id = $_SESSION['id_users'];
+$id_store = $_GET['id']; // ID de la tienda
 
 include('../connection/conexion.php');
-$consulta = "SELECT * FROM products";
-$resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
-$consulta_users = "SELECT * FROM users WHERE id = '$id'";
-$resultado_users = mysqli_query($conexion, $consulta_users) or die(mysqli_error($conexion));
-$fila_user = mysqli_fetch_assoc($resultado_users);
+// Obtener el inventario de la tienda específica
+$consulta_inventario = "SELECT * FROM inventories WHERE store_id = '$id_store' ";
+$resultado_inventario = mysqli_query($conexion, $consulta_inventario) or die(mysqli_error($conexion));
+$fila_inventario = mysqli_fetch_row($resultado_inventario);
+$id_inventario = $fila_inventario[0]; // Suponiendo que el id del inventario está en la primera columna
+
+
+// Obtener los productos del inventario de esa tienda
+$consulta_productos = "SELECT * FROM products WHERE inventories_id = '$id_inventario'";
+$resultado_productos = mysqli_query($conexion, $consulta_productos) or die(mysqli_error($conexion));
+
+// Obtener los datos del usuario
+$consulta_user = "SELECT * FROM users WHERE id = '$id'";
+$resultado_user = mysqli_query($conexion, $consulta_user) or die(mysqli_error($conexion));
+$fila_user = mysqli_fetch_assoc($resultado_user);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +90,7 @@ $fila_user = mysqli_fetch_assoc($resultado_users);
             <!-- MAIN CONTAINER -->
             <div id="container">
                 <!-- SHOP NAME -->
-                <div id="shopName"><a href="index.html"> <b>Frut</b>eria</a></div>
+                <div id="shopName"><a href="index.html"> <b>Frut</b>eria</a>   <?php echo $id_inventario ?></div>
 
 
                 <!-- SEARCH SECTION -->
@@ -127,31 +139,27 @@ $fila_user = mysqli_fetch_assoc($resultado_users);
 
     <!-- Cards de productos traidos de la base de datos -->
     <div id="mainContainer">
-        <h1>Productos disponibles en local</h1>
-        <div id="containerClothing">
-            <?php while ($products = mysqli_fetch_assoc($resultado)) { ?>
-                <div id="box">
-                    <?php
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($products['foto']) . '" class="card-img-top" style="height: 250px; object-fit: cover;">';
-                    ?>
-                    <div id="details">
-                        <h3><?php echo $products['nombre']; ?></h3>
-                        <h4><?php echo $products['description']; ?></h4>
-                        <h2>$ <?php echo $products['precio']; ?></h2>
-                    </div>
-                    <div class="extra-options" style="padding: 10px;">
-                        <center>
-                            <label for="quantity">Cantidad (gramos):</label>
-                            <!-- Usamos el nombre del producto como parte del id para hacer el input único -->
-                            <input type="number" id="quantity-<?php echo $products['nombre']; ?>" class="quantity-input" placeholder="En gramos" min="1">
-                            <button onclick="addToCart('<?php echo $products['nombre']; ?>', <?php echo $products['precio']; ?>, 'quantity-<?php echo $products['nombre']; ?>')">Añadir al Carrito</button>
-                        </center>
-                    </div>
+    <h1>Productos disponibles en la tienda</h1>
+    <div id="containerClothing">
+        <?php while ($producto = mysqli_fetch_assoc($resultado_productos)) { ?>
+            <div id="box">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['foto']); ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
+                <div id="details">
+                    <h3><?php echo $producto['nombre']; ?></h3>
+                    <h4><?php echo $producto['description']; ?></h4>
+                    <h2>$ <?php echo $producto['precio']; ?></h2>
                 </div>
-            <?php } ?>
-        </div>
+                <div class="extra-options" style="padding: 10px;">
+                    <center>
+                        <label for="quantity">Cantidad (gramos):</label>
+                        <input type="number" id="quantity-<?php echo $producto['nombre']; ?>" class="quantity-input" placeholder="En gramos" min="1">
+                        <button onclick="addToCart('<?php echo $producto['nombre']; ?>', <?php echo $producto['precio']; ?>, 'quantity-<?php echo $producto['nombre']; ?>')">Añadir al Carrito</button>
+                    </center>
+                </div>
+            </div>
+        <?php } ?>
     </div>
-
+</div>
     <!-- Estilo de modal/carrito -->
     <style>
         #cartModal {

@@ -16,10 +16,7 @@ $row = $result->fetch_assoc()
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Holiday - Tours</title>
-	<!--
-Holiday Template
-http://www.templatemo.com/tm-475-holiday
--->
+
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -27,7 +24,7 @@ http://www.templatemo.com/tm-475-holiday
 	<link href="css/stemplatemo-style.css" rel="stylesheet">
 
 	<style>
-		.store{
+		.store {
 			width: 532px;
 			height: 247px;
 			object-fit: cover;
@@ -52,7 +49,7 @@ http://www.templatemo.com/tm-475-holiday
 							<li><a href="../index.php">INICIO</a></li>
 							<li><a href="sobre.html">SOBRE</a></li>
 							<li><a href="#" class="active">Tiendas</a></li>
-							<li><a href="contact.html">SESIÓN</a></li>
+							<li><a href="../login/login.html">SESIÓN</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -67,27 +64,27 @@ http://www.templatemo.com/tm-475-holiday
 			<ul class="slides">
 				<li>
 					<div class="tm-banner-inner">
-						<h1 class="tm-banner-title">Find <span class="tm-yellow-text">Tour</span> Programs</h1>
-						<p class="tm-banner-subtitle">For Your Destinations</p>
-						<a href="#more" class="tm-banner-link">Learn More</a>
+						<h1 class="tm-banner-title">ENCUENTRA <span class="tm-yellow-text">TU FURTERIA</span> MÁS CERCANA</h1>
+						<p class="tm-banner-subtitle">PARA COMPRAR</p>
+						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
 					</div>
-					<img src="img/banner-2.jpg" title="1" />
+					<img src="img/b1.jpg" alt="Image" />
 				</li>
 				<li>
 					<div class="tm-banner-inner">
-						<h1 class="tm-banner-title">Lorem <span class="tm-yellow-text">Ipsum</span> Dolor</h1>
-						<p class="tm-banner-subtitle">Wonderful Destinations</p>
-						<a href="#more" class="tm-banner-link">Learn More</a>
+						<h1 class="tm-banner-title">ESTAS EN <span class="tm-yellow-text">BUSCA DE</span> UNA FRUTERIA</h1>
+						<p class="tm-banner-subtitle">BUSCALA AHORA</p>
+						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
 					</div>
-					<img src="img/banner-3.jpg" title="1" />
+					<img src="img/banner-2.jpg" alt="Image" />
 				</li>
 				<li>
 					<div class="tm-banner-inner">
-						<h1 class="tm-banner-title">Proin <span class="tm-yellow-text">Gravida</span> Nibhvell</h1>
-						<p class="tm-banner-subtitle">Velit Auctor</p>
-						<a href="#more" class="tm-banner-link">Learn More</a>
+						<h1 class="tm-banner-title">QUIERES CREAR <span class="tm-yellow-text">UN NEGOCIO</span> PARA TI</h1>
+						<p class="tm-banner-subtitle">QUE ESPERAS</p>
+						<a href="#more" class="tm-banner-link">REGISTRATE</a>
 					</div>
-					<img src="img/banner-1.jpg" title="1" />
+					<img src="img/banner-3.jpg" alt="Image" />
 				</li>
 			</ul>
 		</div>
@@ -144,12 +141,13 @@ http://www.templatemo.com/tm-475-holiday
 						$telefono = $row['telefono']; // Teléfono de la frutería
 						$direccion = $row['ubicacion']; // Dirección de la frutería
 						$foto = $row['foto']; // Foto de la frutería
+						$id = $row['id'];
 				?>
 						<!-- Estructura HTML que quieres mostrar por cada tienda -->
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="tm-tours-box-1">
-								
-							<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['foto']) . '" alt="image" class="store">' ?>
+
+								<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['foto']) . '" alt="image" class="store">' ?>
 
 								<div class="tm-tours-box-1-info">
 									<div class="tm-tours-box-1-info-left">
@@ -164,9 +162,10 @@ http://www.templatemo.com/tm-475-holiday
 									<div class="tm-tours-box-1-link-left">
 										Compra en <?php echo $nombre; ?>
 									</div>
-									<a href="../app/index.php" class="tm-tours-box-1-link-right">
+									<a href="../app/index.php?id=<?php echo urlencode($row['id']); ?>" class="tm-tours-box-1-link-right">
 										ir a la fruteria
 									</a>
+
 								</div>
 							</div>
 						</div>

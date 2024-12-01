@@ -25,7 +25,7 @@ $resultado = $consulta->get_result();
 // Validar credenciales
 if ($resultado->num_rows > 0) {
     // Usuario válido: redirigir a la página de productos
-    header("Location: ../store/productos/tabla-productos.php");
+    header("Location: ../store/productos/productos.php");
     exit;
 } else {
     // Credenciales incorrectas
