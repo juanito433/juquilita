@@ -90,7 +90,7 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
             <!-- MAIN CONTAINER -->
             <div id="container">
                 <!-- SHOP NAME -->
-                <div id="shopName"><a href="index.html"> <b>Frut</b>eria</a>   <?php echo $id_inventario ?></div>
+                <div id="shopName"><a href="index.html"> <b>Frut</b>eria</a> <?php echo $id_inventario ?></div>
 
 
                 <!-- SEARCH SECTION -->
@@ -108,11 +108,11 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
                     <?php if (isset($_SESSION['id_users'])): ?>
                         <button id="profileBtn" style="background-color: #ffffff00;"> <img src="img/usuario.png" alt="Usario" width="40px"> </button>
                         <div id="profileDropdown" class="dropdown hidden">
-                            <p><strong>Nombre:</strong> <span id="userName"><?php echo $fila_user['nombre'];?></span></p>
-                            <p><strong>Direccion:</strong> <span id="userEmail"><?php echo $fila_user['direccion'];?></span></p>
-                            <p><strong>Teléfono:</strong> <span id="userPhone"><?php echo $fila_user['telefono'];?></span></p>
+                            <p><strong>Nombre:</strong> <span id="userName"><?php echo $fila_user['nombre']; ?></span></p>
+                            <p><strong>Direccion:</strong> <span id="userEmail"><?php echo $fila_user['direccion']; ?></span></p>
+                            <p><strong>Teléfono:</strong> <span id="userPhone"><?php echo $fila_user['telefono']; ?></span></p>
                             <form action="../login/cerrar_sesion.php">
-                            <button id="logoutBtn" style="background-color: red; color: white; border: none; padding: 10px; cursor: pointer;">Cerrar Sesión</button>
+                                <button id="logoutBtn" style="background-color: red; color: white; border: none; padding: 10px; cursor: pointer;">Cerrar Sesión</button>
                             </form>
                         </div>
                     <?php else: ?>
@@ -139,27 +139,32 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
 
     <!-- Cards de productos traidos de la base de datos -->
     <div id="mainContainer">
-    <h1>Productos disponibles en la tienda</h1>
-    <div id="containerClothing">
-        <?php while ($producto = mysqli_fetch_assoc($resultado_productos)) { ?>
-            <div id="box">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['foto']); ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
-                <div id="details">
-                    <h3><?php echo $producto['nombre']; ?></h3>
-                    <h4><?php echo $producto['description']; ?></h4>
-                    <h2>$ <?php echo $producto['precio']; ?></h2>
-                </div>
-                <div class="extra-options" style="padding: 10px;">
-                    <center>
-                        <label for="quantity">Cantidad (gramos):</label>
-                        <input type="number" id="quantity-<?php echo $producto['nombre']; ?>" class="quantity-input" placeholder="En gramos" min="1">
-                        <button onclick="addToCart('<?php echo $producto['nombre']; ?>', <?php echo $producto['precio']; ?>, 'quantity-<?php echo $producto['nombre']; ?>')">Añadir al Carrito</button>
-                    </center>
-                </div>
-            </div>
-        <?php } ?>
+        <h1>Productos disponibles en la tienda</h1>
+        <div id="containerClothing">
+            <?php if (mysqli_num_rows($resultado_productos) > 0): ?>
+                <?php while ($producto = mysqli_fetch_assoc($resultado_productos)) { ?>
+                    <div id="box">
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['foto']); ?>" class="card-img-top" style="height: 250px; object-fit: cover;">
+                        <div id="details">
+                            <h3><?php echo $producto['nombre']; ?></h3>
+                            <h4><?php echo $producto['description']; ?></h4>
+                            <h2>$ <?php echo $producto['precio']; ?></h2>
+                        </div>
+                        <div class="extra-options" style="padding: 10px;">
+                            <center>
+                                <label for="quantity">Cantidad (gramos):</label>
+                                <input type="number" id="quantity-<?php echo $producto['nombre']; ?>" class="quantity-input" placeholder="En gramos" min="1">
+                                <button onclick="addToCart(<?php echo $producto['id']; ?>, '<?php echo $producto['nombre']; ?>', <?php echo $producto['precio']; ?>, 'quantity-<?php echo $producto['nombre']; ?>')">Añadir al Carrito</button>
+                            </center>
+                        </div>
+                    </div>
+                <?php } ?>
+            <?php else: ?>
+                <h3>No hay productos disponibles en esta tienda.</h3>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
+
     <!-- Estilo de modal/carrito -->
     <style>
         #cartModal {
@@ -202,9 +207,15 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
         <div id="cartModal" style="display: block;     border-radius: 8px; width: 600px;">
             <button id="closeCart" onclick="closeModal()" style="float: right;">Cerrar</button>
             <h2>Carrito de Compra</h2>
-            <ul id="cartItems"></ul>
-            <p>Total: $<span id="totalPrice">0</span></p>
-            <button id="checkoutButton" style="display: none;" onclick="checkout()">Pagar</button>
+            <form id="checkoutForm" method="POST" action="process_payment.php?id=<?php echo $id_store ?>" ">
+            
+                <input type=" hidden" name="cart_data" id="cartData" style="display: none;">
+                <ul id="cartItems"></ul>
+                <p>Total: $<span id="totalPrice">0.00</span></p>
+
+            </form>
+            <button id="checkoutButton" onclick="checkout()">Pagar</button>
+
         </div>
 
     </div>
@@ -290,7 +301,7 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
         document.getElementById('modal').style.display = 'none';
     }
 
-    //Para cerrar al hacer clic fuera del modal
+    // Para cerrar al hacer clic fuera del modal
     window.onclick = function(event) {
         const modal = document.getElementById('modal');
         if (event.target === modal) {
@@ -298,12 +309,14 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
         }
     };
 
+
     // Variables para el carrito
     let cart = [];
     let totalPrice = 0;
 
     // Función para agregar producto al carrito
-    function addToCart(name, pricePerKilo, quantityInputId) {
+    // Función para agregar producto al carrito
+    function addToCart(productId, productName, pricePerKilo, quantityInputId) {
         const quantityInGrams = parseFloat(document.getElementById(quantityInputId).value);
 
         if (isNaN(quantityInGrams) || quantityInGrams <= 0) {
@@ -311,28 +324,37 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
             return;
         }
 
-        const price = (pricePerKilo / 1000) * quantityInGrams;
+        const pricePerUnit = pricePerKilo / 1000; // Calcula el precio por gramo
+        const subtotal = pricePerUnit * quantityInGrams;
 
-        const existingProduct = cart.find(item => item.name === name);
+        // Comprueba si el producto ya existe en el carrito
+        const existingProduct = cart.find(item => item.products_id === productId);
         if (existingProduct) {
-            existingProduct.quantityInGrams += quantityInGrams;
-            existingProduct.price += price;
+            existingProduct.cantidad += quantityInGrams;
+            existingProduct.subtotal += subtotal;
         } else {
             cart.push({
-                name,
-                pricePerKilo,
-                quantityInGrams,
-                price
+                products_id: productId, // Guardar el ID del producto
+                nombre: productName, // Guardar el nombre del producto
+                cantidad: quantityInGrams,
+                precio_unitario: pricePerUnit,
+                subtotal: subtotal
             });
         }
 
         updateCartWindow();
         updateBadgeCount();
+        saveCart();
     }
+
+
+
+
 
     function saveCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+
 
     function loadCart() {
         const savedCart = localStorage.getItem('cart');
@@ -348,32 +370,24 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
     // Función para actualizar la ventana del carrito
     function updateCartWindow() {
         const cartItems = document.getElementById('cartItems');
-        cartItems.innerHTML = '';
+        cartItems.innerHTML = ''; // Limpia los productos anteriores
 
-        // Iterar sobre el carrito y agregar elementos al DOM
+        // Actualizar los productos en el carrito
         cart.forEach((item, index) => {
             const li = document.createElement('li');
             li.innerHTML = `
-            ${item.name} - 
-            <input type="number" class="input-shadow" value="${item.quantityInGrams}" min="1" 
-                onchange="updateQuantity(${index}, this.value)"> g = $${item.price.toFixed(2)}
+            <strong>Producto: ${item.nombre}</strong> - 
+            ${item.cantidad}g = $${item.subtotal.toFixed(2)}
             <button onclick="removeItem(${index})">Eliminar</button>
         `;
             cartItems.appendChild(li);
         });
 
         // Actualizar el precio total
-        totalPrice = cart.reduce((total, item) => total + item.price, 0);
-        document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
-
-        // Mostrar u ocultar el botón de pago según el estado del carrito
-        const checkoutButton = document.getElementById('checkoutButton');
-        if (cart.length > 0) {
-            checkoutButton.style.display = 'block'; // Mostrar el botón
-        } else {
-            checkoutButton.style.display = 'none'; // Ocultar el botón
-        }
+        const totalPriceElement = document.getElementById('totalPrice');
+        totalPriceElement.innerText = cart.reduce((total, item) => total + item.subtotal, 0).toFixed(2);
     }
+
 
     // Función para actualizar la cantidad de un producto dentro del carrito
     function updateQuantity(index, newQuantityInGrams) {
@@ -397,27 +411,52 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
 
     // Función para eliminar un producto del carrito
     function removeItem(index) {
-        cart.splice(index, 1); // Eliminar el producto del array
-        updateCartWindow();
-        updateBadgeCount();
+        cart.splice(index, 1); // Eliminar el producto del carrito
+        updateCartWindow(); // Actualizar la vista del carrito
+        updateBadgeCount(); // Actualizar el contador del carrito
+        saveCart(); // Guardar el carrito actualizado
     }
+
+
+    // Función para actualizar el contador de productos en el ícono del carrito
+    function updateBadgeCount() {
+        const badge = document.getElementById('badge');
+        badge.innerText = cart.length;
+    }
+
+
+    function loadCart() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart); // Carga el carrito guardado
+            updateCartWindow(); // Actualiza la interfaz
+            updateBadgeCount(); // Actualiza el badge
+        }
+    }
+    window.onload = loadCart;
+
 
     // Función para actualizar la cantidad de productos en el badge
+
     function updateBadgeCount() {
-        document.getElementById('badge').textContent = cart.length;
+        const badge = document.getElementById('badge');
+        badge.textContent = cart.length; // Muestra el número de productos distintos
     }
 
-    // Función para pagar
+
+    // Función para proceder al pago
     function checkout() {
         if (cart.length === 0) {
-            alert("El carrito está vacío. Agrega productos antes de pagar.");
+            alert('Tu carrito está vacío. Añade productos antes de proceder.');
             return;
         }
 
-        alert(`Compra realizada con éxito. Total: $${totalPrice.toFixed(2)}`);
-        cart = []; // Vaciar el carrito después de pagar
-        updateCartWindow();
-        closeModal(); // Cerrar el modal
+        // Guardar el carrito en un campo oculto para enviarlo al servidor
+        const cartDataField = document.getElementById('cartData');
+        cartDataField.value = JSON.stringify(cart);
+
+        // Enviar el formulario de pago
+        document.getElementById('checkoutForm').submit();
     }
 </script>
 
