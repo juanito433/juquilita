@@ -1,5 +1,15 @@
 <?php
 include('../../connection/conexion.php');
+session_start(); // Siempre al inicio
+
+if (!isset($_SESSION['id_store'])) {
+    header("Location: ../../login/login_empresa.html");
+    exit();
+}
+$id_store = $_SESSION['id_store'];
+$qstore = "SELECT * FROM store WHERE id = '$id_store' ";
+$rstore = mysqli_query($conexion, $qstore) or die(mysqli_error($conexion));
+$fila_store = mysqli_fetch_row($rstore);
 
 $consulta = "SELECT * FROM products";
 $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
@@ -31,7 +41,7 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                 <img src="../../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name">Juquilita</span>
+            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
         </div>
 
         <div class="menu-items">

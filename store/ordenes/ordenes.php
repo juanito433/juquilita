@@ -6,8 +6,13 @@ if (!isset($_SESSION['id_store'])) {
     header("Location: ../../login/login_empresa.html");
     exit();
 }
-// Obtén el ID del usuario logueado
+
 $id_store = $_SESSION['id_store'];
+$qstore = "SELECT * FROM store WHERE id = '$id_store' ";
+$rstore = mysqli_query($conexion, $qstore) or die(mysqli_error($conexion));
+$fila_store = mysqli_fetch_row($rstore);
+
+// Obtén el ID del usuario logueado
 $consulta = "SELECT * FROM orders WHERE store_id = '$id_store' ";
 $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
@@ -38,7 +43,7 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                 <img src="../../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name">Juquilita</span>
+            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
         </div>
 
         <div class="menu-items">
@@ -59,14 +64,14 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Ordenes</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="../perfil/perfil.php">
                         <i class="uil uil-comments"></i>
                         <span class="link-name">Perfil</span>
                     </a></li>
-                <!-- <li><a href="#">
+                <li><a href="#">
                         <i class="uil uil-share"></i>
-                        <span class="link-name">Share</span>
-                    </a></li> -->
+                        <span class="link-name">Historial</span>
+                    </a></li>
             </ul>
 
 

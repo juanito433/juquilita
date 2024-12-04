@@ -21,6 +21,10 @@ $resultado5 = mysqli_query($conexion, $consulta);
 $resultado6 = mysqli_query($conexion, $consulta);
 $resultado7 = mysqli_query($conexion, $consulta);
 
+$qstore = "SELECT * FROM store WHERE id = '$id_store' ";
+$rstore = mysqli_query($conexion, $qstore) or die(mysqli_error($conexion));
+$fila_store = mysqli_fetch_row($rstore);
+
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +52,7 @@ $resultado7 = mysqli_query($conexion, $consulta);
                 <img src="../../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name">Juquilita</span>
+            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
         </div>
 
         <div class="menu-items">
