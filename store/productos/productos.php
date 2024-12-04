@@ -42,7 +42,7 @@ $resultado7 = mysqli_query($conexion, $consulta);
 
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="../panel.html">
+                <li><a href="../panel.php">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Panel Principal</span>
                     </a></li>

@@ -1,6 +1,4 @@
 <?php
-include('../../connection/conexion.php');
-
 $consulta = "SELECT * FROM products";
 $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
@@ -44,11 +42,11 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Productos</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="../ventas/ventas.php">
                         <i class="uil uil-chart"></i>
                         <span class="link-name">Ventas</span>
                     </a></li>
-                <li><a href="../ordenes/ordenes.php">
+                <li><a href="#">
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Ordenes</span>
                     </a></li>
