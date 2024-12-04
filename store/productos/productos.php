@@ -54,7 +54,7 @@ $resultado7 = mysqli_query($conexion, $consulta);
                         <i class="uil uil-chart"></i>
                         <span class="link-name">Ventas</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="../ordenes/ordenes.php">
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Ordenes</span>
                     </a></li>
@@ -130,10 +130,7 @@ $resultado7 = mysqli_query($conexion, $consulta);
             </div>
 
             <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Recent Activity</span>
-                </div>
+                
 
                 <div class="activity-data">
                     <div class="data nombre">

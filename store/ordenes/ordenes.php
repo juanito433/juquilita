@@ -1,5 +1,14 @@
 <?php
-$consulta = "SELECT * FROM products";
+include('../../connection/conexion.php');
+session_start(); // Siempre al inicio
+
+if (!isset($_SESSION['id_store'])) {
+    header("Location: ../../login/login_empresa.html");
+    exit();
+}
+// Obtén el ID del usuario logueado
+$id_store = $_SESSION['id_store'];
+$consulta = "SELECT * FROM orders WHERE store_id = '$id_store' ";
 $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
 
 ?>
@@ -97,53 +106,51 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
             <img src="../../images/logo.jpeg" alt="">
         </div>
 
-        <div class="dash-content" ;
-">
+        <div class="dash-content" ; ">
 
 
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Venta actual</span>
-                </div>
-
-                <div class="activity-data" id="carrito-container"style="flex-direction: column">
-                    <!-- <div id="carrito-container">
-                        <table id="carrito">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Cantidad (g)</th>
-                                    <th>Precio Total</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                        <p><strong>Total a Pagar: $<span id="total">0.00</span></strong></p>
-                    </div>
- -->
-                    <section class="table__body" >
-                        <table id="carrito">
-                            <thead>
-                                <tr>
-                                    <th class="data-title"> Id <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Producto <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Cantidad (Gramos) <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Precio <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Eliminar <span class="icon-arrow">&UpArrow;</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </section>
-                    <br>
-                    <span class="data-title" style="font-size: 25px;"><strong>Total a Pagar: $<span id="total" style="font-size: 30px;">0.00</span></strong></span>
-                        <button id="checkoutButton" class='button' onclick="checkout()">Pagar</button>
-                </div>
+            <div class=" activity">
+            <div class="title">
+                <i class="uil uil-clock-three"></i>
+                <span class="text">Ordenes del día</span>
             </div>
+
+            <div class="activity-data" id="carrito-container" style="flex-direction: column">
+                <section class="table__body">
+                    <table id="carrito">
+                        <thead>
+                            <tr>
+                                <th class="data-title"> Folio</th>
+                                <th class="data-title"> Dirección de entrega </th>
+                                <th class="data-title"> Total </th>
+                                <th class="data-title"> Fecha </th>
+                                <th class="data-title"> Folio Cliente</th>
+                                <th class="data-title"> Pago</th>
+                                <th class="data-title"> Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($order = mysqli_fetch_row($resultado)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $order[0]; ?></td>
+                                    <td><?php echo $order[1]; ?></td>
+                                    <td><?php echo $order[3]; ?></td>
+                                    <td><?php echo $order[4]; ?></td>
+                                    <td><?php echo $order[5]; ?></td>
+                                    <td><?php echo $order[6]; ?></td>
+                                    <td><?php echo $order[2]; ?></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+
+                    </table>
+                </section>
+            </div>
+        </div>
         </div>
     </section>
 

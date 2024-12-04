@@ -21,11 +21,15 @@ $consulta = $conexion->prepare("SELECT * FROM store WHERE correo = '$email' AND 
 // Ejecutar la consulta
 $consulta->execute();
 $resultado = $consulta->get_result();
+$store = mysqli_fetch_assoc($resultado);
+
 
 // Validar credenciales
 if ($resultado->num_rows > 0) {
     // Usuario válido: redirigir a la página de productos
-    header("Location: ../store/productos/productos.php");
+    session_start();
+    $_SESSION['id_store'] = $store['id'];
+    header("Location: ../store/panel.php");
     exit;
 } else {
     // Credenciales incorrectas
