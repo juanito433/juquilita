@@ -1,7 +1,18 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria")
-    or die("Error de conexión en la base de datos");
-$consulta = "SELECT * FROM products";
+include('../../connection/conexion.php');
+session_start(); // Siempre al inicio
+
+if (!isset($_SESSION['id_store'])) {
+    header("Location: ../../login/login_empresa.html");
+    exit();
+}
+// Obtén el ID del usuario logueado
+$id_store = $_SESSION['id_store'];
+$queryinventario = "SELECT * FROM inventories WHERE store_id = '$id_store'";
+$inventario = mysqli_query($conexion, $queryinventario);
+$inv = mysqli_fetch_row($inventario);
+$id_inventario= $inv[0];
+$consulta = "SELECT * FROM products WHERE inventories_id = $id_inventario";
 $resultado = mysqli_query($conexion, $consulta);
 $resultado2 = mysqli_query($conexion, $consulta);
 $resultado3 = mysqli_query($conexion, $consulta);
@@ -240,7 +251,7 @@ $resultado7 = mysqli_query($conexion, $consulta);
         }
 
         function eliminarEmpleado(id) {
-            if (confirm('¿Estás seguro de que deseas eliminar este empleado?')) {
+            if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
                 window.location.href = `delete/delete-productos.php?id=${id}`;
             }
         }
