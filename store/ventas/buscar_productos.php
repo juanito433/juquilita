@@ -1,6 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
-
+include('../../connection/conexion.php');
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
