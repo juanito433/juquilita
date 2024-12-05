@@ -43,19 +43,19 @@ $fila_store = mysqli_fetch_row($resultado);
 
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="#">
+                <li><a href="../panel.php">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Panel Principal</span>
                     </a></li>
-                <li><a href="productos/productos.php">
+                <li><a href="../productos/productos.php">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Productos</span>
                     </a></li>
-                <li><a href="ventas/ventas.php">
+                <li><a href="../ventas/ventas.php">
                         <i class="uil uil-chart"></i>
                         <span class="link-name">Ventas</span>
                     </a></li>
-                <li><a href="ordenes/ordenes.php">
+                <li><a href="../ordenes/ordenes.php">
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Ordenes</span>
                     </a></li>
@@ -63,9 +63,9 @@ $fila_store = mysqli_fetch_row($resultado);
                         <i class="uil uil-comments"></i>
                         <span class="link-name">Perfil</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="../historial.php">
                         <i class="uil uil-share"></i>
-                        <span class="link-name">Share</span>
+                        <span class="link-name">Historial</span>
                     </a></li>
             </ul>
 

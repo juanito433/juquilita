@@ -73,14 +73,14 @@ $fila_store = mysqli_fetch_row($rstore);
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Ordenes</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="../perfil/perfil.php">
                         <i class="uil uil-comments"></i>
                         <span class="link-name">Perfil</span>
                     </a></li>
-                <!-- <li><a href="#">
+                <li><a href="../historial.php">
                         <i class="uil uil-share"></i>
                         <span class="link-name">Share</span>
-                    </a></li> -->
+                    </a></li>
             </ul>
 
 
