@@ -1,6 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
-
+include('../connection/conexion.php');
 if (isset($_GET['query'])) {
     $query = mysqli_real_escape_string($conexion, $_GET['query']);
 
