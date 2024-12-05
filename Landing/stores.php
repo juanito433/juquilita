@@ -38,7 +38,7 @@ $row = $result->fetch_assoc()
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-					<a href="#" class="tm-site-name">Holiday</a>
+					<a href="#" class="tm-site-name">JUQUILITA</a>
 				</div>
 				<div class="col-lg-6 col-md-8 col-sm-9">
 					<div class="mobile-menu-icon">

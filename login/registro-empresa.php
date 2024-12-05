@@ -29,15 +29,23 @@ if (isset($_FILES['foto'])) {
         $foto = mysqli_real_escape_string($conexion, $image_data);
 
         // Preparar la consulta de inserción
-        $consulta = "INSERT INTO store (nombre, ubicacion, foto, fecha_creacion, correo, password, telefono) VALUES ('$nombre', '$ubicación', '$foto', '$fecha_creacion', '$email', '$password', '$phone')";
+        $consulta = "INSERT INTO store (nombre, ubicacion, foto, fecha_creacion, correo, password, telefono) 
+                     VALUES ('$nombre', '$ubicación', '$foto', '$fecha_creacion', '$email', '$password', '$phone')";
 
         // Ejecutar la consulta
         if (mysqli_query($conexion, $consulta)) {
-            // Redirigir a la página de productos
-            header("Location: ../store/productos/tabla-productos.php");
+            // Obtener el ID de la tienda recién creada
+            $id_store = mysqli_insert_id($conexion);
+
+            // Iniciar sesión y almacenar el ID de la tienda
+            session_start();
+            $_SESSION['id_store'] = $id_store;
+
+            // Redirigir al panel de la tienda
+            header("Location: ../store/panel.php");
             exit;
         } else {
-            echo "Error al subir el producto: " . mysqli_error($conexion);
+            echo "Error al crear la tienda: " . mysqli_error($conexion);
         }
     } else {
         echo "Error al cargar la imagen.";

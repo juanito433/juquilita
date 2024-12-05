@@ -1,4 +1,8 @@
 <?php
+/* $host = "localhost"; 
+$usuario = "root"; 
+$contraseña = ""; 
+$baseDeDatos = "fruteria";  */
 $host = "localhost"; 
 $usuario = "u418684783_juquilita1"; 
 $contraseña = "Juquilita123"; 
