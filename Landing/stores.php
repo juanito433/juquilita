@@ -32,7 +32,7 @@ $row = $result->fetch_assoc()
 
 		@media (max-width: 583px) {
 			.store {
-				width: 344px;
+				width: 400px;
 				height: 247px;
 				object-fit: cover;
 			}
