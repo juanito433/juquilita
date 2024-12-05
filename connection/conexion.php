@@ -1,8 +1,8 @@
 <?php
 $host = "localhost"; 
-$usuario = "root"; 
-$contraseña = ""; 
-$baseDeDatos = "fruteria"; 
+$usuario = "u418684783_juquilita1"; 
+$contraseña = "Juquilita123"; 
+$baseDeDatos = "u418684783_juquilita"; 
 
 $conexion = new mysqli($host, $usuario, $contraseña, $baseDeDatos);
 
