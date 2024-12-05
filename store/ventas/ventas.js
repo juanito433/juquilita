@@ -111,20 +111,34 @@ function eliminarProducto(index) {
 
 // Confirmar venta y vaciar carrito
 function confirmarVenta() {
+    if (carrito.length === 0) {
+        alert('El carrito está vacío. Agrega productos antes de confirmar la venta.');
+        return;
+    }
+
     fetch('procesar_venta.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(carrito)
     })
-        .then(response => response.text())
-        .then(data => {
-            alert('Venta procesada correctamente');
-            carrito = []; // Vaciar carrito
-            localStorage.removeItem('carrito'); // Limpiar LocalStorage
-            actualizarCarrito();
-        })
-        .catch(error => console.error('Error al procesar la venta:', error));
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(`Venta registrada con éxito. Total: $${data.total.toFixed(2)}`);
+            carrito = []; // Vaciar el carrito
+            guardarCarritoEnLocalStorage();
+            actualizarCarrito(); // Actualizar la interfaz
+        } else {
+            alert(`Error: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error('Error al procesar la venta:', error);
+        alert('Hubo un error al procesar la venta.');
+    });
 }
+
+
 
 // Cargar carrito desde LocalStorage
 function cargarCarritoDesdeLocalStorage() {
@@ -154,7 +168,7 @@ function checkout() {
     actualizarCarrito();
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     const modal = document.getElementById('resultados');
     if (event.target === modal) {
         closeModal();

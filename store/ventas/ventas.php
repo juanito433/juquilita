@@ -153,7 +153,7 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                     </section>
                     <br>
                     <span class="data-title" style="font-size: 25px;"><strong>Total a Pagar: $<span id="total" style="font-size: 30px;">0.00</span></strong></span>
-                        <button id="checkoutButton" class='button' onclick="checkout()">Pagar</button>
+                        <button id="checkoutButton" class='button' onclick="confirmarVenta()">Pagar</button>
                 </div>
             </div>
         </div>

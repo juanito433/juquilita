@@ -1,21 +1,50 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
+include('../../connection/conexion.php');
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productos = json_decode(file_get_contents('php://input'), true);
+if (!isset($_SESSION['id_store'])) {
+    header("Location: ../../login/login_empresa.html");
+    exit();
+}
 
-    foreach ($productos as $producto) {
-        $id = $producto['id'];
+$id_store = $_SESSION['id_store'];
+$carrito = json_decode(file_get_contents('php://input'), true);
+
+if (empty($carrito)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'El carrito está vacío.']);
+    exit();
+}
+
+// Calcular el total de la venta
+$total = 0;
+foreach ($carrito as $producto) {
+    $total += $producto['precioTotal'];
+}
+
+// Insertar en la tabla sales
+$fecha = date('Y-m-d H:i:s');
+$queryVenta = "INSERT INTO sales (fecha, total, store_id) VALUES ('$fecha', '$total', '$id_store')";
+if (mysqli_query($conexion, $queryVenta)) {
+    $sale_id = mysqli_insert_id($conexion);
+
+    // Insertar en la tabla sales_details
+    foreach ($carrito as $producto) {
         $cantidad = $producto['cantidadGramos'];
-        $precio = $producto['precioTotal'];
+        $precio_unitario = $producto['precioPorKilo'] / 1000;
+        $subtotal = $producto['precioTotal'];
+        $product_id = $producto['id'];
 
-        $sql = "INSERT INTO ventas (producto_id, cantidad, precio_total) VALUES (?, ?, ?)";
-        $stmt = mysqli_prepare($conexion, $sql);
-        mysqli_stmt_bind_param($stmt, 'iid', $id, $cantidad, $precio);
-        mysqli_stmt_execute($stmt);
+        $queryDetalle = "INSERT INTO sales_details (cantidad, precio_unitario, subtotal, sales_id, products_id) 
+                         VALUES ('$cantidad', '$precio_unitario', '$subtotal', '$sale_id', '$product_id')";
+        mysqli_query($conexion, $queryDetalle) or die(mysqli_error($conexion));
     }
 
-    echo "Venta registrada.";
-    mysqli_close($conexion);
+    echo json_encode(['success' => 'Venta registrada correctamente.']);
+} else {
+    http_response_code(500);
+    echo json_encode(['error' => 'Error al registrar la venta.']);
 }
+
+mysqli_close($conexion);
 ?>
