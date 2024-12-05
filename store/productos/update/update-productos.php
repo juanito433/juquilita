@@ -12,6 +12,6 @@ $marca = mysqli_real_escape_string($conexion, $_POST['categoria']);
 $consulta = "UPDATE products SET nombre='$nombre', precio='$precio', description='$empresa', stock='$tipo', fecha_caducidad='$descripcion', categoria='$marca' WHERE id=$id";
 mysqli_query($conexion, $consulta);
 mysqli_close($conexion);
-header("Location: ../tabla-productos.php");
+header("Location: ../productos.php");
 exit();
 ?>
