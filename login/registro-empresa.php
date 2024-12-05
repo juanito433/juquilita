@@ -11,7 +11,7 @@ date_default_timezone_set('America/Mexico_City'); // Cambia la zona horaria si e
 $fecha_creacion = date('Y-m-d H:i:s');
 
 // Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
+include('../connection/conexion.php');
 
 if (!$conexion) {
     die("Error en la conexión: " . mysqli_connect_error());
