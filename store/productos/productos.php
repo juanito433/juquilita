@@ -11,7 +11,7 @@ $id_store = $_SESSION['id_store'];
 $queryinventario = "SELECT * FROM inventories WHERE store_id = '$id_store'";
 $inventario = mysqli_query($conexion, $queryinventario);
 $inv = mysqli_fetch_row($inventario);
-$id_inventario= $inv[0];
+$id_inventario = $inv[0];
 $consulta = "SELECT * FROM products WHERE inventories_id = $id_inventario";
 $resultado = mysqli_query($conexion, $consulta);
 $resultado2 = mysqli_query($conexion, $consulta);
@@ -52,7 +52,7 @@ $fila_store = mysqli_fetch_row($rstore);
                 <img src="../../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
+            <span class="logo_name"><?php echo $store = $fila_store[1]; ?></span>
         </div>
 
         <div class="menu-items">
@@ -122,30 +122,22 @@ $fila_store = mysqli_fetch_row($rstore);
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Productos</span>
+
                 </div>
 
-                <!-- <div class="boxes">
-                    <div class="box box1">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="text">Total Likes</span>
-                        <span class="number">50,120</span>
-                    </div>
-                    <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Comments</span>
-                        <span class="number">20,120</span>
-                    </div>
-                    <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Total Share</span>
-                        <span class="number">10,120</span>
-                    </div>
-                </div> -->
+                <div class="boxes">
+
+                    <a href="productos/alta-productos.html" class="button" style="text-decoration: none;">
+                        <i class="uil uil-plus-circle"></i>
+
+                        Agregar Producto</a>
+                </div>
 
             </div>
+            <br>
 
             <div class="activity">
-                
+
 
                 <div class="activity-data">
                     <div class="data nombre">
@@ -224,13 +216,13 @@ $fila_store = mysqli_fetch_row($rstore);
                                     <span class="data-list">
                                         <?php
                                         echo "<button class='button' onclick='editarEmpleado(" . $fila[0] . ")'>Editar</button> ";
-                                        echo "<button class='button'  onclick='eliminarEmpleado(" . $fila[0] . ")'>Eliminar</button>";
+                                        echo "<button class='button'  onclick='eliminarEmpleado(" . $fila[0] . ")' style='background-color: red !important;'>Eliminar</button>";
                                         ?>
                                     </span>
 
                                 <?php } ?>
                             </tr>
-                        </table>
+                        </table >
                     </div>
                 </div>
             </div>

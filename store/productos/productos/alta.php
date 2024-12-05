@@ -1,4 +1,5 @@
 <?php
+include('../../../connection/conexion.php');
 // Recibir datos del formulario
 $nombre = $_POST['nombre'];
 $description = $_POST['description'];
@@ -6,14 +7,23 @@ $precio = $_POST['precio'];
 $stock = $_POST['stock'];
 $fecha_caducidad = $_POST['fecha_caducidad'];
 $categoria = $_POST['categoria'];
-$inventario=1;
+session_start(); // Siempre al inicio
+
+if (!isset($_SESSION['id_store'])) {
+    header("Location: ../../login/login_empresa.html");
+    exit();
+}
+$id_store = $_SESSION['id_store'];
+$queryinventario = "SELECT * FROM inventories WHERE store_id = '$id_store'";
+$inventario = mysqli_query($conexion, $queryinventario);
+$inv = mysqli_fetch_row($inventario);
+$inventario = $inv[0];
 
 // Obtener la fecha actual como timestamp desde el servidor
 date_default_timezone_set('America/Mexico_City'); // Cambia la zona horaria si es necesario
 $fecha_actual = date('Y-m-d H:i:s');
 
 // Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
 
 if (!$conexion) {
     die("Error en la conexión: " . mysqli_connect_error());
@@ -37,7 +47,7 @@ if (isset($_FILES['foto'])) {
         // Ejecutar la consulta
         if (mysqli_query($conexion, $consulta)) {
             // Redirigir a la página de productos
-            header("Location: ../tabla-productos.php");
+            header("Location: ../productos.php");
             exit;
         } else {
             echo "Error al subir el producto: " . mysqli_error($conexion);

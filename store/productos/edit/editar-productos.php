@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria") or die("Error de conexión en la base de datos");
+include('../../../connection/conexion.php');
 $id = intval($_GET['id']);
 $consulta = "SELECT * FROM products WHERE id=$id";
 $resultado = mysqli_query($conexion, $consulta);

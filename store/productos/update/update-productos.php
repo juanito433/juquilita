@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "fruteria") or die("Error de conexión en la base de datos");
+include('../../../connection/conexion.php');
 $id = intval($_POST['id']);
 $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
 $precio = mysqli_real_escape_string($conexion, $_POST['precio']);
