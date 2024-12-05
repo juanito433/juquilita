@@ -9,8 +9,7 @@ if (empty($email) || empty($password)) {
 }
 
 // Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "fruteria");
-
+include('../connection/conexion.php');
 if (!$conexion) {
     die("Error en la conexión: " . mysqli_connect_error());
 }
