@@ -26,7 +26,7 @@ $user = mysqli_fetch_assoc($resultado);
 if ($resultado->num_rows > 0) {
     session_start();
     $_SESSION['id_users'] = $user['id'];
-    header("Location: ../app/index.php");
+    header("Location: ../app/stores.php");
     exit;
 } else {
     // Credenciales incorrectas
