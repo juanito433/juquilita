@@ -41,33 +41,33 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                 <img src="../../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
+            <span class="logo_name"><?php echo $store = $fila_store[1]; ?></span>
         </div>
 
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="../panel.php">
-                        <i class="uil uil-estate"></i>
+                        <i class="uil uil-estate"></i> <!-- Correcto: Representa un "hogar" o inicio -->
                         <span class="link-name">Panel Principal</span>
                     </a></li>
                 <li><a href="../productos/productos.php">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="uil uil-box"></i> <!-- Cambiado a "caja", representando productos o inventario -->
                         <span class="link-name">Productos</span>
                     </a></li>
                 <li><a href="#">
-                        <i class="uil uil-chart"></i>
+                        <i class="uil uil-shopping-cart"></i> <!-- Cambiado a "carrito de compras" para ventas -->
                         <span class="link-name">Ventas</span>
                     </a></li>
                 <li><a href="../ordenes/ordenes.php">
-                        <i class="uil uil-thumbs-up"></i>
+                        <i class="uil uil-receipt"></i> <!-- Cambiado a "recibo" para representar órdenes -->
                         <span class="link-name">Ordenes</span>
                     </a></li>
                 <li><a href="../perfil/perfil.php">
-                        <i class="uil uil-comments"></i>
+                        <i class="uil uil-user"></i> <!-- Cambiado a "usuario" para representar perfil -->
                         <span class="link-name">Perfil</span>
                     </a></li>
                 <li><a href="../historial.php">
-                        <i class="uil uil-share"></i>
+                        <i class="uil uil-history"></i> <!-- Cambiado a "historial", que tiene sentido semántico -->
                         <span class="link-name">Historial</span>
                     </a></li>
             </ul>
@@ -109,18 +109,17 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
             <img src="../../images/logo.jpeg" alt="">
         </div>
 
-        <div class="dash-content" ;
-">
+        <div class="dash-content" ; ">
 
 
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Venta actual</span>
-                </div>
+            <div class=" activity">
+            <div class="title">
+                <i class="uil uil-clock-three"></i>
+                <span class="text">Venta actual</span>
+            </div>
 
-                <div class="activity-data" id="carrito-container"style="flex-direction: column">
-                    <!-- <div id="carrito-container">
+            <div class="activity-data" id="carrito-container" style="flex-direction: column">
+                <!-- <div id="carrito-container">
                         <table id="carrito">
                             <thead>
                                 <tr>
@@ -136,26 +135,26 @@ $resultado = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
                         <p><strong>Total a Pagar: $<span id="total">0.00</span></strong></p>
                     </div>
  -->
-                    <section class="table__body" >
-                        <table id="carrito">
-                            <thead>
-                                <tr>
-                                    <th class="data-title"> Id <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Producto <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Cantidad (Gramos) <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Precio <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th class="data-title"> Eliminar <span class="icon-arrow">&UpArrow;</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </section>
-                    <br>
-                    <span class="data-title" style="font-size: 25px;"><strong>Total a Pagar: $<span id="total" style="font-size: 30px;">0.00</span></strong></span>
-                        <button id="checkoutButton" class='button' onclick="confirmarVenta()">Pagar</button>
-                </div>
+                <section class="table__body">
+                    <table id="carrito">
+                        <thead>
+                            <tr>
+                                <th class="data-title"> Id <span class="icon-arrow">&UpArrow;</span></th>
+                                <th class="data-title"> Producto <span class="icon-arrow">&UpArrow;</span></th>
+                                <th class="data-title"> Cantidad (Gramos) <span class="icon-arrow">&UpArrow;</span></th>
+                                <th class="data-title"> Precio <span class="icon-arrow">&UpArrow;</span></th>
+                                <th class="data-title"> Eliminar <span class="icon-arrow">&UpArrow;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </section>
+                <br>
+                <span class="data-title" style="font-size: 25px;"><strong>Total a Pagar: $<span id="total" style="font-size: 30px;">0.00</span></strong></span>
+                <button id="checkoutButton" class='button' onclick="confirmarVenta()">Pagar</button>
             </div>
+        </div>
         </div>
     </section>
 

@@ -37,35 +37,36 @@ $fila_store = mysqli_fetch_row($resultado);
                 <img src="../images/logo.jpeg" alt="">
             </div>
 
-            <span class="logo_name"><?php echo $store = $fila_store[1];?></span>
+            <span class="logo_name"><?php echo $store = $fila_store[1]; ?></span>
         </div>
 
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="#">
-                        <i class="uil uil-estate"></i>
+                        <i class="uil uil-estate"></i> <!-- Correcto: Representa un "hogar" o inicio -->
                         <span class="link-name">Panel Principal</span>
                     </a></li>
                 <li><a href="productos/productos.php">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="uil uil-box"></i> <!-- Cambiado a "caja", representando productos o inventario -->
                         <span class="link-name">Productos</span>
                     </a></li>
                 <li><a href="ventas/ventas.php">
-                        <i class="uil uil-chart"></i>
+                        <i class="uil uil-shopping-cart"></i> <!-- Cambiado a "carrito de compras" para ventas -->
                         <span class="link-name">Ventas</span>
                     </a></li>
                 <li><a href="ordenes/ordenes.php">
-                        <i class="uil uil-thumbs-up"></i>
+                        <i class="uil uil-receipt"></i> <!-- Cambiado a "recibo" para representar órdenes -->
                         <span class="link-name">Ordenes</span>
                     </a></li>
                 <li><a href="perfil/perfil.php">
-                        <i class="uil uil-comments"></i>
+                        <i class="uil uil-user"></i> <!-- Cambiado a "usuario" para representar perfil -->
                         <span class="link-name">Perfil</span>
                     </a></li>
                 <li><a href="historial.php">
-                        <i class="uil uil-share"></i>
+                        <i class="uil uil-history"></i> <!-- Cambiado a "historial", que tiene sentido semántico -->
                         <span class="link-name">Historial</span>
                     </a></li>
+
             </ul>
 
 
