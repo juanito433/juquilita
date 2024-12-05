@@ -67,8 +67,21 @@ while ($row = mysqli_fetch_assoc($resultado_inventario)) {
                 <li><a href="historial.php"><i class="uil uil-history"></i><span class="link-name">Historial</span></a></li>
             </ul>
             <ul class="logout-mode">
-                <li><a href="#"><i class="uil uil-signout"></i><span class="link-name">Cerrar Sesión</span></a></li>
-                <li class="mode"><a href="#"><i class="uil uil-moon"></i><span class="link-name">Modo oscuro</span></a></li>
+                <li><a href="#">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Cerrar Sesión</span>
+                    </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Modo oscuro</span>
+                    </a>
+
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

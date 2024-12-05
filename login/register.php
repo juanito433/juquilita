@@ -22,7 +22,7 @@ $consulta = "INSERT INTO users (nombre, correo, password, direccion, telefono, f
 // Ejecutar la consulta
 if (mysqli_query($conexion, $consulta)) {
     // Redirigir a la página de productos
-    header("Location: ../app/index.php");
+    header("Location: ../app/stores.php");
     exit;
 } else {
     echo "Error al registrar: " . mysqli_error($conexion);
