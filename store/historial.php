@@ -146,7 +146,7 @@ $resultado4 = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion))
                                 <tr>
                                     <span class="data-title">Total</span>
                                     <?php while ($fila = mysqli_fetch_row($resultado3)) { ?>
-                                        <span class="data-list"><?php echo $fila[2] ?></span>
+                                        <span class="data-list">$ <?php echo $fila[2] ?></span>
 
                                     <?php } ?>
                                 </tr>

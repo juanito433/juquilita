@@ -121,7 +121,12 @@ function confirmarVenta() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(carrito)
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la solicitud: ' + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 alert(`Venta registrada con éxito. Total: $${data.total.toFixed(2)}`);
@@ -132,11 +137,11 @@ function confirmarVenta() {
                 alert(`Error: ${data.message}`);
             }
         })
-        
         .catch(error => {
             console.error('Error al procesar la venta:', error);
-            alert('Hubo un error al procesar la venta.');
+            alert('Hubo un error al procesar la venta. Intenta nuevamente.');
         });
+    
 }
 
 
