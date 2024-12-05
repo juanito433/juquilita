@@ -16,9 +16,9 @@ $store_id = $_GET['id']; // ID de la tienda
 $consulta_user = "SELECT * FROM users WHERE id = '$user_id'";
 $resultado_user = mysqli_query($conexion, $consulta_user) or die(mysqli_error($conexion));
 
-$user= mysqli_fetch_assoc($resultado_user);
-$usuario= $user['nombre'];
-$direccion= $user['direccion'];
+$user = mysqli_fetch_assoc($resultado_user);
+$usuario = $user['nombre'];
+$direccion = $user['direccion'];
 $metodopago = 'efectvo';
 $status = 'pendiente';
 // Obtener el carrito desde el almacenamiento local (suponiendo que se pasa como POST)
@@ -54,7 +54,7 @@ try {
         $product_id = $item['products_id'];
         $quantity = $item['cantidad'];
         $subtotal = $item['subtotal'];
-        $pricePerUnit = $item['precio_unitario']*1000;
+        $pricePerUnit = $item['precio_unitario'] * 1000;
         // Insertar el producto en order_items
         $query_order_item = "INSERT INTO orders_details (cantidad,precio_unitario, total, orders_id, products_id) 
                              VALUES ('$quantity','$pricePerUnit','$subtotal','$order_id', '$product_id')";
@@ -75,8 +75,7 @@ try {
 
     // Confirmar la transacción
     mysqli_commit($conexion);
-    echo "Pedido realizado con éxito.";
-
+    echo "<script>alert('¡Pedido realizado con éxito!'); window.location.href = 'index.php?id=$store_id';</script>";
 } catch (Exception $e) {
     // Revertir la transacción en caso de error
     mysqli_rollback($conexion);
@@ -85,4 +84,3 @@ try {
 
 // Cerrar la conexión
 mysqli_close($conexion);
-?>

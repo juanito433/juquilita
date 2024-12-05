@@ -214,7 +214,7 @@ $fila_user = mysqli_fetch_assoc($resultado_user);
                 <p>Total: $<span id="totalPrice">0.00</span></p>
 
             </form>
-            <button id="checkoutButton" onclick="checkout()">Pagar</button>
+            <button onclick="checkout()">Pagar</button>
 
         </div>
 

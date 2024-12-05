@@ -121,21 +121,22 @@ function confirmarVenta() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(carrito)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert(`Venta registrada con éxito. Total: $${data.total.toFixed(2)}`);
-            carrito = []; // Vaciar el carrito
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito(); // Actualizar la interfaz
-        } else {
-            alert(`Error: ${data.message}`);
-        }
-    })
-    .catch(error => {
-        console.error('Error al procesar la venta:', error);
-        alert('Hubo un error al procesar la venta.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Venta registrada con éxito. Total: $${data.total.toFixed(2)}`);
+                carrito = []; // Vaciar el carrito
+                guardarCarritoEnLocalStorage();
+                actualizarCarrito(); // Actualizar la interfaz
+            } else {
+                alert(`Error: ${data.message}`);
+            }
+        })
+        
+        .catch(error => {
+            console.error('Error al procesar la venta:', error);
+            alert('Hubo un error al procesar la venta.');
+        });
 }
 
 
@@ -163,14 +164,15 @@ function checkout() {
     const totalPrice = carrito.reduce((total, producto) => total + producto.precioTotal, 0);
     alert(`Compra realizada con éxito. Total: $${totalPrice.toFixed(2)}`);
 
-    carrito = []; // Vaciar el carrito después de pagar
+    carrito = []; // Vaciar el carrito
     localStorage.removeItem('carrito'); // Limpiar el LocalStorage
+    console.log(carrito);  // Verifica que esté vacío
     actualizarCarrito();
 }
 
-window.onclick = function (event) {
-    const modal = document.getElementById('resultados');
-    if (event.target === modal) {
-        closeModal();
-    }
-};
+    window.onclick = function (event) {
+        const modal = document.getElementById('resultados');
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
