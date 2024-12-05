@@ -82,7 +82,7 @@ $baner = $resultado->fetch_assoc();
 			<ul class="slides">
 				<li>
 					<div class="tm-banner-inner">
-						<h1 class="tm-banner-title">ENCUENTRA <span class="tm-yellow-text">TU FURTERIA</span> MÁS CERCANA</h1>
+						<h1 class="tm-banner-title">ENCUENTRA <span class="tm-yellow-text">TU FRUTERIA</span> MÁS CERCANA</h1>
 						<p class="tm-banner-subtitle">PARA COMPRAR</p>
 						<a href="login/login.html" class="tm-banner-link">Inicia Sesión</a>
 					</div>
