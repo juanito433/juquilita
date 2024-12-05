@@ -84,7 +84,7 @@ $baner = $resultado->fetch_assoc();
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">ENCUENTRA <span class="tm-yellow-text">TU FURTERIA</span> MÁS CERCANA</h1>
 						<p class="tm-banner-subtitle">PARA COMPRAR</p>
-						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
+						<a href="login/login.html" class="tm-banner-link">Inicia Sesión</a>
 					</div>
 					<img src="landing/img/b1.jpg" alt="Image" />
 				</li>
@@ -92,7 +92,7 @@ $baner = $resultado->fetch_assoc();
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">ESTAS EN <span class="tm-yellow-text">BUSCA DE</span> UNA FRUTERIA</h1>
 						<p class="tm-banner-subtitle">BUSCALA AHORA</p>
-						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
+						<a href="login/login.html" class="tm-banner-link">Inicia Sesión</a>
 					</div>
 					<img src="landing/img/banner-2.jpg" alt="Image" />
 				</li>
@@ -100,7 +100,7 @@ $baner = $resultado->fetch_assoc();
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">QUIERES CREAR <span class="tm-yellow-text">UN NEGOCIO</span> PARA TI</h1>
 						<p class="tm-banner-subtitle">QUE ESPERAS</p>
-						<a href="#more" class="tm-banner-link">REGISTRATE</a>
+						<a href="login/login_empresa.html" class="tm-banner-link">REGISTRATE</a>
 					</div>
 					<img src="landing/img/banner-3.jpg" alt="Image" />
 				</li>

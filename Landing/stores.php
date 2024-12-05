@@ -38,7 +38,7 @@ $row = $result->fetch_assoc()
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-					<a href="#" class="tm-site-name">JUQUILITA</a>
+					<a href="#" class="tm-site-name">JUQUILITA </a>
 				</div>
 				<div class="col-lg-6 col-md-8 col-sm-9">
 					<div class="mobile-menu-icon">
@@ -66,7 +66,7 @@ $row = $result->fetch_assoc()
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">ENCUENTRA <span class="tm-yellow-text">TU FURTERIA</span> MÁS CERCANA</h1>
 						<p class="tm-banner-subtitle">PARA COMPRAR</p>
-						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
+						<a href="../login/login.html" class="tm-banner-link">Inicia Sesión</a>
 					</div>
 					<img src="img/b1.jpg" alt="Image" />
 				</li>
@@ -74,7 +74,7 @@ $row = $result->fetch_assoc()
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">ESTAS EN <span class="tm-yellow-text">BUSCA DE</span> UNA FRUTERIA</h1>
 						<p class="tm-banner-subtitle">BUSCALA AHORA</p>
-						<a href="#more" class="tm-banner-link">Inicia Sesión</a>
+						<a href="../login/login.html" class="tm-banner-link">Inicia Sesión</a>
 					</div>
 					<img src="img/banner-2.jpg" alt="Image" />
 				</li>
@@ -82,7 +82,7 @@ $row = $result->fetch_assoc()
 					<div class="tm-banner-inner">
 						<h1 class="tm-banner-title">QUIERES CREAR <span class="tm-yellow-text">UN NEGOCIO</span> PARA TI</h1>
 						<p class="tm-banner-subtitle">QUE ESPERAS</p>
-						<a href="#more" class="tm-banner-link">REGISTRATE</a>
+						<a href="../login/login_empresa.html" class="tm-banner-link">REGISTRATE</a>
 					</div>
 					<img src="img/banner-3.jpg" alt="Image" />
 				</li>
