@@ -1,12 +1,12 @@
 <?php
-$host = "localhost"; 
+/* $host = "localhost"; 
 $usuario = "root"; 
 $contraseña = ""; 
-$baseDeDatos = "fruteria"; 
-/* $host = "localhost"; 
+$baseDeDatos = "fruteria";  */
+$host = "localhost"; 
 $usuario = "u418684783_juquilita1"; 
 $contraseña = "Juquilita123"; 
-$baseDeDatos = "u418684783_juquilita";  */
+$baseDeDatos = "u418684783_juquilita"; 
 
 $conexion = new mysqli($host, $usuario, $contraseña, $baseDeDatos);
 
