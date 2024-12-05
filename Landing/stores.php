@@ -29,6 +29,14 @@ $row = $result->fetch_assoc()
 			height: 247px;
 			object-fit: cover;
 		}
+
+		@media (max-width: 583px) {
+			.store {
+				width: 344px;
+				height: 247px;
+				object-fit: cover;
+			}
+		}
 	</style>
 </head>
 
